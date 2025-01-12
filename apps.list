@@ -1,13 +1,13 @@
 [
     {
         "name": "Winlator",
-        "url": "/repo/apks/emulator/winlator/index.html",
+        "url": "/apks/emulator/winlator/index.html",
         "image": "https://github.com/APackage/A.P.A-repo/releases/download/Winlator_9.0/Winlator_9.0.jpeg",
         "categories": ["Game", "Emulator"]
     },
     {
         "name": "ZArchiver",
-        "url": "/repo/apks/file-manager/zarchiver/index.html",
+        "url": "/apks/file-manager/zarchiver/index.html",
         "image": "https://github.com/APackage/A.P.A-repo/releases/download/ZArchiver_1_0_10/ZArchiver_1_0_10.jpeg",
         "categories": ["Tools"]
     }

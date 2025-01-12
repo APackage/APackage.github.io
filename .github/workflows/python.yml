@@ -37,6 +37,11 @@ jobs:
         run: |
           python update_html.py  # Python script'inizi çalıştırın
 
+
+      - name: Replace 'class_' with 'class' in index.html
+        run: |
+          sed -i 's/class_="cat"/class="cat"/g' index.html  # class_ -> class değiştirme
+
       - name: Commit changes
         run: |
           git add index.html

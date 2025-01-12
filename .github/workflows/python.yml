@@ -13,6 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Alt modülleri çekmek için bu parametreyi ekleyin
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -28,9 +33,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install beautifulsoup4  # BeautifulSoup kütüphanesini yükle
 
-      - name: Clone A.P.A repo
-        run: |
-          git clone https://github.com/APackage/A.P.A-repo repo
 
       - name: Set up Git user
         run: |

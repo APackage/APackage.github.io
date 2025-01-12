@@ -1,13 +1,13 @@
 [
     {
         "name": "Winlator",
-        "url": "/apks/emulator/winlator/index.html",
+        "url": "/repo/apks/emulator/winlator/index.html",
         "image": "https://github.com/APackage/A.P.A-repo/releases/download/Winlator_9.0/Winlator_9.0.jpeg",
         "categories": ["Game", "Emulator"]
     },
     {
         "name": "AnotherApp",
-        "url": "/apps/emulator/anotherapp/index.html",
+        "url": "/repo/apks/emulator/anotherapp/index.html",
         "image": "https://example.com/anotherapp.jpeg",
         "categories": ["Utility", "Tool"]
     }

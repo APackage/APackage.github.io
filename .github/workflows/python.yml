@@ -22,7 +22,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: true  # Submodule'ları kullanma
+          submodules: false  # Submodule'ları kullanma
+      - name: rm
+        run: |
+          git submodule deinit -f --all
+          git rm -f repo  # 'repo' yerine eski submodule adı yazılmalı
+          git commit -m "Remove submodule references"
+          git push
+
+
      
       - name: rm index.html
         run: |
@@ -34,8 +42,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install beautifulsoup4  # BeautifulSoup kütüphanesini yükle
 
-     
-
+      - name: clone repo
+        run: |
+          git clone https://github.com/APackage/A.P.A-repo repo
+          git add repo
 
       - name: Set up Git user
         run: |

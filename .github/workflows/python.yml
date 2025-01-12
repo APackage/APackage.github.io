@@ -17,6 +17,11 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'  # Python sürümünü seçin (örneğin 3.8)
+     
+      - name: rm index.html
+        uses: |
+          rm index.html
+          cp index_template index.html
 
       - name: Install dependencies
         run: |

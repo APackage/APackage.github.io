@@ -29,12 +29,17 @@ jobs:
         with:
           submodules: false  # Submodule'ları kullanma
           
-      - name: rm
+      - name: Remove submodule references
         run: |
-          git submodule deinit -f --all
-          git rm -f repo  # 'repo' yerine eski submodule adı yazılmalı
-          git commit -m "Remove submodule references"
-          git push
+            if [ -d "repo" ]; then
+             echo "Submodule 'repo' found, removing..."
+             git submodule deinit -f --all
+             git rm -f repo  # 'repo' yerine submodule adını yazın
+             git commit -m "Remove submodule references"
+             git push
+            else
+             echo "No submodule 'repo' found, skipping removal."
+            fi
 
 
      
@@ -51,7 +56,7 @@ jobs:
       - name: clone repo
         run: |
           git clone https://github.com/APackage/A.P.A-repo repo
-          git add --cached repo
+          git rm --cached repo
 
     
 

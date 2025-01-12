@@ -49,6 +49,7 @@ jobs:
       - name: Commit changes
         run: |
           git add index.html
+          git add repo/
           git commit -m "Update index.html with new apps" || echo "No changes to commit"
 
       - name: Push changes

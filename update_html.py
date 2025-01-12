@@ -1,46 +1,49 @@
-import json
+from bs4 import BeautifulSoup
 import os
 
-# apps.list JSON dosyasının yolu
-apps_list_file = 'apps.list'
+# HTML dosyasını oku
+with open('index.html', 'r') as file:
+    html_content = file.read()
 
-# index.html dosyasının yolu
-html_file = 'index.html'
+# BeautifulSoup ile HTML'yi parçalara ayır
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# <ul> etiketini bul
+ul_tag = soup.find('ul')
+
+# Eğer <ul> etiketi bulunamazsa hata ver
+if not ul_tag:
+    raise ValueError("<ul> etiketi bulunamadı.")
 
 # apps.list dosyasını oku
-with open(apps_list_file, 'r') as f:
+import json
+
+with open('apps.list', 'r') as f:
     apps = json.load(f)
 
-# index.html dosyasını oku
-with open(html_file, 'r') as f:
-    html_content = f.readlines()
+# Yeni app'leri <ul> içerisine ekle
+for app in apps:
+    li_tag = soup.new_tag('li')
 
-try:
-    # <ul> etiketinin olduğu satırı bul
-    ul_start = html_content.index('<ul>\n') + 1
-    ul_end = html_content.index('</ul>\n')
+    img_tag = soup.new_tag('img', src=app['image'])
+    a_tag = soup.new_tag('a', href=app['url'], target="_blank")
+    a_tag.string = app['name']
+    
+    # Kategorileri de ekle
+    for category in app['categories']:
+        cat_tag = soup.new_tag('a', class_='cat')
+        cat_tag.string = category
+        li_tag.append(cat_tag)
 
-    # Yeni uygulamaları oluştur
-    new_apps = []
-    for app in apps:
-        app_html = f"""
-        <li>
-            <img src="{app['image']}">
-            <a href="{app['url']}" target="_blank">{app['name']}</a>
-        """
-        # Kategorileri ekle
-        for category in app['categories']:
-            app_html += f'<a class="cat">{category}</a>'
-        app_html += "</li>\n"
-        new_apps.append(app_html)
+    # img ve a taglerini li içine ekle
+    li_tag.insert(0, img_tag)
+    li_tag.insert(1, a_tag)
 
-    # Güncellenmiş HTML içeriğini oluştur
-    html_content = html_content[:ul_start] + new_apps + html_content[ul_end:]
+    # Yeni li'yi <ul> içine ekle
+    ul_tag.append(li_tag)
 
-    # Güncellenmiş HTML içeriğini dosyaya yaz
-    with open(html_file, 'w') as f:
-        f.writelines(html_content)
+# Güncellenmiş içeriği dosyaya kaydet
+with open('index.html', 'w') as file:
+    file.write(str(soup))
 
-    print("index.html başarıyla güncellendi.")
-except ValueError as e:
-    print(f"Hata: <ul> etiketi bulunamadı. index.html dosyasındaki etiketler doğru değil veya beklenmedik bir biçim var. Hata: {e}")
+print("index.html başarıyla güncellendi.")

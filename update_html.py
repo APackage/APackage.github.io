@@ -30,7 +30,7 @@ for app in apps:
     
     # Kategorileri de ekle
     for category in app['categories']:
-        cat_tag = soup.new_tag('a', class='cat') 
+        cat_tag = soup.new_tag('a', class_='cat')  # class_ kullanmaya devam et
         cat_tag.string = category
         li_tag.append(cat_tag)
 

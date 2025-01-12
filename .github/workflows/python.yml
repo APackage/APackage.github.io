@@ -13,11 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Checkout repository with submodules
-        uses: actions/checkout@v4
-        with:
-          submodules: true  # Alt modülleri çekmek için bu parametreyi ekleyin
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:

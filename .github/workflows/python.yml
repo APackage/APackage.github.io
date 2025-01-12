@@ -34,11 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install beautifulsoup4  # BeautifulSoup kütüphanesini yükle
 
-      - name: clone repo
-        run: |
-          rm -rf repo
-          git clone https://github.com/APackage/A.P.A-repo repo
-          
+     
 
 
       - name: Set up Git user
@@ -58,7 +54,6 @@ jobs:
       - name: Commit changes
         run: |
           git add index.html
-          git add repo/
           git commit -m "Update index.html with new apps" || echo "No changes to commit"
 
       - name: Push changes

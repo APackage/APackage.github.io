@@ -10,6 +10,12 @@
         "url": "/apks/file-manager/zarchiver/index.html",
         "image": "https://github.com/APackage/A.P.A-repo/releases/download/ZArchiver_1_0_10/ZArchiver_1_0_10.jpeg",
         "categories": ["Tools"]
+    },
+    {
+        "name": "Shizuku",
+        "url": "/apks/system/shizuku/index.html",
+        "image": "https://github.com/APackage/A.P.A-repo/releases/download/Shizuku_13.5.4/Shizuku_13.5.4.jpeg",
+        "categories": ["Tools", "Root", "System"]
     }
 ]
 

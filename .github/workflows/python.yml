@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: false  # Submodule'ları kullanma
+          submodules: true  # Submodule'ları kullanma
      
       - name: rm index.html
         run: |

@@ -35,6 +35,7 @@ jobs:
 
       - name: clone repo
         run: |
+          rm -rf repo
           git clone https://github.com/APackage/A.P.A-repo repo
           
 

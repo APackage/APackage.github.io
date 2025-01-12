@@ -51,7 +51,7 @@ jobs:
       - name: clone repo
         run: |
           git clone https://github.com/APackage/A.P.A-repo repo
-          git add repo
+          git add --cached repo
 
     
 

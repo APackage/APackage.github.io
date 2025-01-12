@@ -56,7 +56,17 @@ jobs:
       - name: clone repo
         run: |
           git clone https://github.com/APackage/A.P.A-repo repo
-          git add repo
+          mv repo/apks/* apks/
+          if [ -d "repo" ]; then
+             echo "Submodule 'repo' found, removing..."
+             git submodule deinit -f --all
+             git rm -f repo  # 'repo' yerine submodule adını yazın
+             git commit -m "Remove submodule references"
+             git push
+            else
+             echo "No submodule 'repo' found, skipping removal."
+            fi
+          rm -rf repo
           
 
     

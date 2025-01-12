@@ -1,28 +1,28 @@
-import json
 import os
 
+# Apps list dosyasını oku
+apps_list_file = 'apps.list'
+
+# Yeni öğeleri ekleyeceğimiz index.html dosyasının yolu
+html_file = 'index.html'
+
 # apps.list dosyasını oku
-with open('apps.list', 'r') as file:
-    apps = json.load(file)
+with open(apps_list_file, 'r') as f:
+    apps = f.readlines()
 
-# HTML içeriğini oluştur
-html_content = """
-<ul>
-"""
+# index.html dosyasını oku
+with open(html_file, 'r') as f:
+    html_content = f.readlines()
 
-for app in apps:
-    html_content += f'''
-    <li>
-        <img src="{app['image']}" alt="{app['name']}">
-        <a href="{app['url']}" target="_blank">{app['name']}</a>
-        {"".join([f'<a class="cat">{category}</a>' for category in app['categories']])}
-    </li>
-    '''
+# <ul> etiketinin olduğu satırı bul
+ul_start = html_content.index('<ul>\n') + 1
+ul_end = html_content.index('</ul>\n')
 
-html_content += """
-</ul>
-"""
+# <ul> arasındaki eski içeriği sil
+html_content = html_content[:ul_start] + [f"<li>{app.strip()}</li>\n" for app in apps] + html_content[ul_end:]
 
-# HTML dosyasını kaydet
-with open('index.html', 'w') as file:
-    file.write(html_content)
+# Güncellenmiş html içeriğini dosyaya yaz
+with open(html_file, 'w') as f:
+    f.writelines(html_content)
+
+print("index.html başarıyla güncellendi.")

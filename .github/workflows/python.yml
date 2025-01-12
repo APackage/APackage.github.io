@@ -55,6 +55,8 @@ jobs:
 
       - name: clone repo
         run: |
+          rm -rf apks
+          mkdir apks
           git clone https://github.com/APackage/A.P.A-repo repo
           mv repo/apks/* apks/
           rm -rf repo

@@ -19,7 +19,7 @@ jobs:
           python-version: '3.8'  # Python sürümünü seçin (örneğin 3.8)
      
       - name: rm index.html
-        uses: |
+        run: |
           rm index.html
           cp index_template index.html
 

@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import os
+import json
 
 # HTML dosyasını oku
 with open('index.html', 'r') as file:
@@ -16,8 +17,6 @@ if not ul_tag:
     raise ValueError("<ul> etiketi bulunamadı.")
 
 # apps.list dosyasını oku
-import json
-
 with open('apps.list', 'r') as f:
     apps = json.load(f)
 
@@ -31,7 +30,7 @@ for app in apps:
     
     # Kategorileri de ekle
     for category in app['categories']:
-        cat_tag = soup.new_tag('a', class='cat')
+        cat_tag = soup.new_tag('a', class='cat') 
         cat_tag.string = category
         li_tag.append(cat_tag)
 

@@ -6,6 +6,12 @@
         "categories": ["Tools", "Font", "Magisk"]
     },
     {
+        "name": "GMS Delete",
+        "url": "/apks/magisk/GMS_Delete/index.html",
+        "image": "https://github.com/APackage/A.P.A-repo/releases/download/custom-font-20250421133041/Magisk_Logo.png",
+        "categories": ["Tools", "Google", "Magisk"]
+    },
+    {
         "name": "microG Installer Revived",
         "url": "/apks/magisk/microg_installer_revived/index.html",
         "image": "https://github.com/APackage/A.P.A-repo/releases/download/custom-font-20250421133041/Magisk_Logo.png",
